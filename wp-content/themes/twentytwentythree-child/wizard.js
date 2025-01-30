@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   let currentStep = 1;
   let name = document.getElementById("name"),
-    email = document.getElementById("email"),
-    phone = document.getElementById("phone"),
-    quantity = document.getElementById("quantity");
+      email = document.getElementById("email"),
+      phone = document.getElementById("phone"),
+      quantity = document.getElementById("quantity");
 
   const steps = {
     1: document.getElementById("step-1"),
@@ -26,11 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   document.getElementById("to-step-2").addEventListener("click", () => {
-    const email = document.getElementById("email").value.trim();
-    if (!email) {
-      alert("Please fill in all required fields.");
+    const emailInput = document.getElementById("email");
+    const email = emailInput.value.trim();
+    const emailPattern =
+      /^[a-z0-9\-_]+(\.[a-z0-9\-_]+)*@[a-z0-9\-_]+(\.[a-z0-9\-_]+)*\.[a-z]{2,}$/i;
+  
+    const isValid = email && emailPattern.test(email);
+  
+    emailInput.style.borderColor = isValid ? "" : "red";
+    emailInput.placeholder = isValid ? "" : "Please enter a valid email address.";
+    if (!isValid) {
+      emailInput.value = "";
       return;
     }
+  
     currentStep = 2;
     showStep(currentStep);
   });
@@ -41,14 +50,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.getElementById("to-step-3").addEventListener("click", () => {
-    const quantity = document.getElementById("quantity").value.trim();
+    const quantityInput = document.getElementById("quantity");
+    const quantity = quantityInput.value.trim();
     if (!quantity || quantity > 1000) {
-      alert("Please enter a valid quantity 1-1000.");
+      quantityInput.style.borderColor = "red";
+      quantityInput.value = "";
+      quantityInput.placeholder = "Please enter value 1-1000";
       return;
     }
+    quantityInput.style.borderColor = "";
     document.getElementById("price-info").textContent = `$${
       quantity <= 10 ? 10 : quantity <= 100 ? 100 : 1000
     }`;
+
     currentStep = 3;
     showStep(currentStep);
   });
@@ -74,8 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((res) => res.json())
       .then((response) => {
         document.getElementById("response-message").innerHTML = response.success
-          ? `✅ Your email was sent successfully`
-          : "⚠️ We cannot send you email right now. Use alternative way to contact us";
+          ? `<img src="/wp-content/themes/twentytwentythree-child/assets/img/done.svg" alt="done"> Your email was send successfully`
+          : `<img src="/wp-content/themes/twentytwentythree-child/assets/img/alert.svg" alt="alert"> We cannot send you email right now. Use alternative way to contact us`;
         currentStep = 4;
         showStep(currentStep);
       })

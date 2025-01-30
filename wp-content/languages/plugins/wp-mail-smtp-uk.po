@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms &#8211; The Most Popular SMTP and Email Log Plugin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-11 09:10:40+0000\n"
+"PO-Revision-Date: 2025-01-27 15:31:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -821,10 +821,6 @@ msgstr "Надіслати повторно"
 msgid "Name"
 msgstr "Ім’я"
 
-#: assets/languages/wp-mail-smtp-vue.php:878
-msgid "Value"
-msgstr "Значение"
-
 #: assets/languages/wp-mail-smtp-vue.php:838
 msgid "Please enter a valid email address"
 msgstr "Будь ласка, введіть правильний email"
@@ -844,6 +840,10 @@ msgstr "Завершити налаштування"
 #: assets/languages/wp-mail-smtp-vue.php:155
 msgid "Save and Continue"
 msgstr "Зберегти та продовжити"
+
+#: assets/languages/wp-mail-smtp-vue.php:878
+msgid "Value"
+msgstr "Значення"
 
 #: src/Admin/SetupWizard.php:505
 msgid "Contact Us"
